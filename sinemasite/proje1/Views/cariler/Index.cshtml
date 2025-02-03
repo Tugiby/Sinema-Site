@@ -1,0 +1,44 @@
+﻿@using proje1.Models.Siniflar
+@model List<caribilgi>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/adminlayout.cshtml";
+}
+<h2>cariler</h2>
+
+<table class="table table-striped" style="margin-top:20px">
+
+    <tr>
+        <th>ID</th>
+        <th>Adı</th>
+        <th>Soyad</th>
+        <th>Mail</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+
+
+    @foreach (var x in Model)
+    {
+
+
+        <tr>
+            <td> @x.cariid</td>
+
+            <td> @x.cariad</td>
+
+            <td> @x.carisoyad</td>
+
+            <td> @x.carimail</td>
+
+
+            <td><a href="/cariler/carisil/@x.cariid" class="btn btn-danger">Sil</a></td>
+
+            <td><a href="/cariler/carigetir/@x.cariid" class="btn btn-success">Güncelle</a></td>
+
+
+        </tr>
+
+    }
+</table>
+<a href="/cariler/yenicari" class="btn btn-info">Yeni Cari Ekle</a>

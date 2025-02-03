@@ -1,0 +1,38 @@
+﻿@using proje1.Models.Siniflar
+@model List<departman>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/adminlayout.cshtml";
+}
+
+<h2>Departmanlar</h2>
+
+<table class="table table-bordered" style="margin-top:20px">
+
+    <tr>
+        <th>ID</th>
+        <th>Departman  Adı</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+
+    @foreach (var k in Model)
+    {
+
+
+        <tr>
+            <td> @k.departmanid</td>
+
+            <td> @k.departmanad</td>
+
+            <td><a href="/departman/departmansil/@k.departmanid" class="btn btn-danger">Sil</a></td>
+
+            <td><a href="/departman/departmangetir/@k.departmanid" class="btn btn-success">Güncelle</a></td>
+
+
+        </tr>
+
+    }
+</table> 
+<a href="/departman/departmanekle" class="btn btn-info">Departman Ekle</a>
+

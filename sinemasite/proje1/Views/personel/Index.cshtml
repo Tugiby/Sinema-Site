@@ -1,0 +1,48 @@
+﻿@using proje1.Models.Siniflar
+@model List<personel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/adminlayout.cshtml";
+}
+
+<h2>Personeller</h2>
+
+<table class="table table-striped" style="margin-top:20px">
+
+    <tr>
+        <th>ID</th>
+        <th>Personel Adı</th>
+        <th>Personel Soyad</th>  
+        <th>Departman</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+
+
+    @foreach (var k in Model)
+    {
+
+
+        <tr>
+            <td> @k.personelid</td>
+
+            <td> @k.personelad</td>
+
+            <td> @k.personelsoyad</td>
+
+
+            <td> @k.departman.departmanad</td>
+
+
+
+            <td><a href="/personel/personelsil/@k.personelid" class="btn btn-danger">sil</a></td>
+            <td><a href="/personel/personelgetir/@k.personelid" class="btn btn-success">Güncelle</a></td>
+
+
+        </tr>
+
+    }
+</table>
+<a href="/personel/personelekle" class="btn btn-info">Yeni Personel Ekle</a>
+
+

@@ -1,0 +1,74 @@
+﻿
+@model proje1.Models.Siniflar.satishareket
+@{
+    ViewBag.Title = "yenisatis";
+    Layout = "~/Views/Shared/adminlayout.cshtml";
+}
+
+<h2>Yeni Satış Sayfası</h2>
+<form class="form-group" method="post">
+
+
+    @Html.LabelFor(x => x.filmozellik)
+    @Html.DropDownListFor(x => x.filmid, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+    <br />
+    @Html.Label("Cari")
+    @Html.DropDownListFor(x => x.cariid, (List<SelectListItem>)ViewBag.dgr2, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.personel)
+    @Html.DropDownListFor(x => x.personelid, (List<SelectListItem>)ViewBag.dgr3, new { @class = "form-control" })
+
+
+
+    <br />
+    @Html.LabelFor(x => x.fiyat)
+    @Html.TextBoxFor(x => x.fiyat, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x => x.toplamtutar)
+    @Html.TextBoxFor(x => x.toplamtutar, new { @class = "form-control" })
+    <br />
+
+
+
+
+
+    <!-- Salon Dropdown -->
+    @Html.Label("Salon")
+    @Html.DropDownListFor(x => x.salonid, (List<SelectListItem>)ViewBag.dgr4, new { @class = "form-control", id = "salonSelect" })
+    <br />
+
+    <!-- Koltuk Dropdown -->
+    <label>Koltuk Seçimi</label>
+    <select id="koltukSelect" name="koltukno" class="form-control">
+       
+    </select>
+    <br />
+
+    <button class="btn btn-primary">Satış Yap</button>
+</form>
+
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#salonSelect').on('change', function () {
+            var salonId = $(this).val();
+            if (salonId) {
+                $.getJSON('/satis/koltuklar/' + salonId, function (data) {
+                    var koltukDropdown = $('#koltukSelect');
+                    koltukDropdown.empty(); // Önce dropdown'ı temizle
+                    koltukDropdown.append('<option value="">Koltuk Seçiniz</option>'); // Varsayılan değer ekle
+
+                    // Gelen verilerle dropdown'ı doldur
+                    $.each(data, function (index, value) {
+                        koltukDropdown.append('<option value="' + value + '">' + value + '</option>');
+                    });
+                });
+            } else {
+                // Eğer salon seçimi kaldırılırsa, dropdown'ı temizle
+                $('#koltukSelect').empty().append('<option value="">Lütfen bir salon seçiniz</option>');
+            }
+        });
+    });
+</script>

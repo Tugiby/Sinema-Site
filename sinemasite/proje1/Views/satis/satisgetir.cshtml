@@ -1,0 +1,43 @@
+﻿@model proje1.Models.Siniflar.satishareket
+@{
+    ViewBag.Title = "satisgetir";
+    Layout = "~/Views/Shared/adminlayout.cshtml";
+}
+
+<h2>satisgetir</h2>
+
+<br />
+<h2>Satış Güncelleme Sayfası</h2>
+<br />
+@using (Html.BeginForm("satisguncelle", "satis", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.satisid)
+    <br />
+    @Html.Label("film")
+        @Html.DropDownListFor(x => x.filmid, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+    <br />
+    @Html.Label("cari")
+        @Html.DropDownListFor(x => x.cariid, (List<SelectListItem>)ViewBag.dgr2, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.personel)
+        @Html.DropDownListFor(x => x.personelid, (List<SelectListItem>)ViewBag.dgr3, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.fiyat)
+    @Html.TextBoxFor(x => x.fiyat, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.toplamtutar)
+    @Html.TextBoxFor(x => x.toplamtutar, new { @class = "form-control" })
+
+
+
+    <br />
+    @Html.LabelFor(x => x.satistarih)
+    @Html.TextBoxFor(x => x.satistarih, new { @class = "form-control" })
+
+    <br />
+
+
+    <button class="btn btn-warning">Güncelle</button>
+
+}
+

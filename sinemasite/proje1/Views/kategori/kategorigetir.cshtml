@@ -1,0 +1,23 @@
+﻿@model proje1.Models.Siniflar.Kategori
+@{
+    ViewBag.Title = "kategorigetir";
+    Layout = "~/Views/Shared/adminlayout.cshtml";
+}
+<br />
+<h2>kategori Güncelleöe</h2>
+<br />
+
+@using (Html.BeginForm("kategoriguncelle", "kategori", FormMethod.Post))
+    {
+    <div class="form-group">
+
+        @Html.LabelFor(x=> x.Kategoriad)
+        @Html.TextBoxFor(x => x.Kategoriad, new {@class="form-control"} )
+        @Html.HiddenFor(x=>x.Kategoriid)
+
+
+    </div>
+
+    <button class="btn btn-warning">Güncelle</button>
+
+    }   

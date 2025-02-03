@@ -1,0 +1,108 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/adminlayout.cshtml";
+}
+
+<div class="container-fluid">
+    <!-- Toplam Satış -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <h4>Toplam Satış Tutarı</h4>
+                    <h2>@ViewBag.ToplamSatis.ToString("C2")</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- En Çok Satan Filmler -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>En Çok Satan Filmler</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <tr>
+                            <th>Film</th>
+                            <th>Satılan Bilet</th>
+                            <th>Hasılat</th>
+                        </tr>
+                        @foreach (var film in ViewBag.EnCokSatanFilmler)
+                        {
+                            <tr>
+                                <td>@film.filmad</td>
+                                <td>@film.SatilanBilet</td>
+                                <td>@film.ToplamHasilat.ToString("C2")</td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Salon Doluluk -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Salon Doluluk Oranları</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <tr>
+                            <th>Salon</th>
+                            <th>Kapasite</th>
+                            <th>Satılan</th>
+                            <th>Doluluk</th>
+                        </tr>
+                        @foreach (var salon in ViewBag.SalonDoluluk)
+                        {
+                            <tr>
+                                <td>@salon.salonad</td>
+                                <td>@salon.ToplamKapasite</td>
+                                <td>@salon.SatilanBilet</td>
+                                <td>%@salon.DolulukOrani</td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Günlük Rapor -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card bg-info text-white">
+                <div class="card-header">
+                    <h4>Günlük Rapor</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-3">
+                            <h5>Bilet Sayısı</h5>
+                            <h3>@(ViewBag.GunlukRapor?.BiletSayisi ?? 0)</h3>
+                        </div>
+                        <div class="col-3">
+                            <h5>Toplam Hasılat</h5>
+                            <h3>@(ViewBag.GunlukRapor?.ToplamHasilat?.ToString("C2") ?? "0.00 ₺")</h3>
+                        </div>
+                        <div class="col-3">
+                            <h5>Film Sayısı</h5>
+                            <h3>@(ViewBag.GunlukRapor?.SatilanFilmSayisi ?? 0)</h3>
+                        </div>
+                        <div class="col-3">
+                            <h5>Salon Sayısı</h5>
+                            <h3>@(ViewBag.GunlukRapor?.KullanilanSalonSayisi ?? 0)</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+

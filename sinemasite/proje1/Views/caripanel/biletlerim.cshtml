@@ -1,0 +1,28 @@
+﻿@using proje1.Models.Siniflar
+@model List<satishareket>
+@{
+    ViewBag.Title = "biletlerim";
+    Layout = "~/Views/Shared/_carilayout.cshtml";
+}
+<br />
+<h2>Biletlerim</h2>
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>Film Adı</th>
+        <th>Fiyat</th>
+        <th>Tarih</th>
+
+    </tr>
+    @foreach(var x in Model)
+            {
+            <tr>
+                <td>@x.filmozellik.filmad</td>
+                <td>@x.fiyat</td>
+                <td>@Convert.ToDateTime(x.satistarih).ToString("dd/MM/yyyy")</td>
+
+
+            </tr>
+
+            }
+</table>

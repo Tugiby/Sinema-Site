@@ -1,0 +1,42 @@
+﻿@model proje1.Models.Siniflar.filmozellik
+@{
+    ViewBag.Title = "filmgetir";
+    Layout = "~/Views/Shared/adminlayout.cshtml";
+}
+<br />
+<h2>Film Güncelleme Sayfası</h2>
+<br />
+@using (Html.BeginForm("filmguncelle", "film", FormMethod.Post))
+{
+    @Html.HiddenFor(x=>x.filmid)
+
+    @Html.LabelFor(x => x.filmad)
+    @Html.TextBoxFor(x => x.filmad, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.yonetmen)
+    @Html.TextBoxFor(x => x.yonetmen, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.biletfiyat)
+    @Html.TextBoxFor(x => x.biletfiyat, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.filmgorsel)
+    @Html.TextBoxFor(x => x.filmgorsel, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.kategori.Kategoriid)
+    @Html.DropDownListFor(x => x.kategoriid, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+
+    <br />
+    @Html.LabelFor(x => x.seanslar)
+    @Html.TextBoxFor(x => x.seansid, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x => x.durum)
+    @Html.TextBoxFor(x => x.durum, new { @class = "form-control" })
+    <br />
+
+
+
+
+    <button class="btn btn-warning">Güncelle</button>
+
+}

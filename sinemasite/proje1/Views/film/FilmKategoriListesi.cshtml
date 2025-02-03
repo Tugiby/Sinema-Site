@@ -1,0 +1,47 @@
+﻿@model IEnumerable<proje1.Models.Siniflar.filmozellik>
+@{
+    ViewBag.Title = "Film Kategori Listesi";
+    Layout = "~/Views/Shared/adminlayout.cshtml";
+}
+
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Film ve Kategori Listesi</h2>
+            <br />
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Film Adı</th>
+                        <th>Yönetmen</th>
+                        <th>Kategori</th>
+                        <th>Bilet Fiyatı</th>
+                        <th>Durum</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var film in Model)
+                    {
+                        <tr>
+                            <td>@film.filmad</td>
+                            <td>@film.yonetmen</td>
+                            <td>@film.kategori.Kategoriad</td>
+                            <td>@film.biletfiyat.ToString("C2")</td>
+                            <td>
+                                @if (film.durum)
+                                {
+                                    <span class="badge badge-success">Aktif</span>
+                                }
+                                else
+                                {
+                                    <span class="badge badge-danger">Pasif</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

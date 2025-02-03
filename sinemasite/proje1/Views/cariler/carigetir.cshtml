@@ -1,0 +1,36 @@
+﻿@model proje1.Models.Siniflar.caribilgi
+@{
+    ViewBag.Title = "carigetir";
+    Layout = "~/Views/Shared/adminlayout.cshtml";
+}
+
+<br />
+
+
+@using (Html.BeginForm("cariguncelle", "cariler", FormMethod.Post))
+{
+    <div class="form-group">
+
+        @Html.LabelFor(x => x.cariad)
+        @Html.TextBoxFor(x => x.cariad, new { @class = "form-control" })
+        @Html.HiddenFor(x => x.cariid)
+        <br />
+
+        @Html.LabelFor(x => x.carisoyad)
+        @Html.TextBoxFor(x => x.carisoyad, new { @class = "form-control" })
+
+        <br />
+
+        @Html.LabelFor(x => x.carimail)
+        @Html.TextBoxFor(x => x.carimail, new { @class = "form-control" })
+
+        <br />
+
+        <button class="btn btn-warning">Güncelle</button>
+    </div>
+
+    
+
+}
+
+

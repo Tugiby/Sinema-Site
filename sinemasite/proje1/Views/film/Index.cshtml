@@ -1,0 +1,49 @@
+﻿@using proje1.Models.Siniflar;
+@model List<filmozellik>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/adminlayout.cshtml";
+}
+
+<h2>Filmler</h2>
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Film Adı</th>
+        <th>Yönetmen</th>
+        <th>Bilet Fiyatı</th>
+        <th>Kategori</th>
+        <th>Görsel</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var c in Model)
+    {
+        <tr>
+            <td>@c.filmid</td>
+            <td>@c.filmad</td>
+            <td>@c.yonetmen</td>
+            <td>@c.biletfiyat</td>
+            <td>@c.kategori.Kategoriad</td>
+            <td>
+                <img src="@c.filmgorsel" style="width:100px; height:80px"    alt="Alternate Text" />
+
+            </td>
+            <td>
+                <a href="/film/filmsil/@c.filmid" class="btn btn-danger">Sil</a>
+            </td>
+            <td>
+                <a href="/film/filmgetir/@c.filmid" class="btn btn-success">Güncellle</a>
+            </td>
+
+
+
+
+        </tr>
+
+
+    }
+</table>
+<a href="/film/yenifilm" class="btn btn-info">Yeni Film</a>
+

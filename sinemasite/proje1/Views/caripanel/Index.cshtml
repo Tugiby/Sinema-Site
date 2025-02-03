@@ -1,0 +1,29 @@
+﻿@model proje1.Models.Siniflar.caribilgi
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_cariLayout.cshtml";
+}
+<br />
+<h2>Müşteri Paneli</h2>
+<br />
+@using (Html.BeginForm("Index2", "MusteriPanel", FormMethod.Post))
+{
+    <table class="table table-hover">
+        <tr>
+        <td><label>Mail Adresi: @HttpContext.Current.User.Identity.Name</label></td>
+        </tr>
+
+        <tr>
+        <td><label>Ad:</label>@Html.TextBoxFor(x => x.cariad, new { @class = "form-control" })</td>
+        </tr>
+
+        <tr>
+        <td><label>Soyad:</label>@Html.TextBoxFor(x => x.carisoyad, new { @class = "form-control" })</td>
+        </tr>
+
+        <tr>
+        <td><label>Şifre:</label>@Html.TextBoxFor(x => x.carisifre, new { @class = "form-control" })</td>
+        </tr>
+    </table>
+   
+}

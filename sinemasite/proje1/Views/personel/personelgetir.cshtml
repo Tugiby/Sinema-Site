@@ -1,0 +1,32 @@
+﻿@model proje1.Models.Siniflar.personel
+@{
+    ViewBag.Title = "personelgetir";
+    Layout = "~/Views/Shared/adminlayout.cshtml";
+}
+
+@using (Html.BeginForm("personelguncelle", "personel", FormMethod.Post))
+{
+    <div class="form-group">
+
+        @Html.LabelFor(x => x.personelad)
+        @Html.TextBoxFor(x => x.personelad, new { @class = "form-control" })
+        @Html.HiddenFor(x => x.personelid)
+        <br />
+
+        @Html.LabelFor(x => x.personelsoyad)
+        @Html.TextBoxFor(x => x.personelsoyad, new { @class = "form-control" })
+
+        <br />
+
+        @Html.LabelFor(x => x.personelgorsel)
+        @Html.TextBoxFor(x => x.personelgorsel, new { @class = "form-control" })
+
+        <br />
+
+        @Html.LabelFor(x => x.departman)
+        @Html.DropDownListFor(x => x.departmanid, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+
+        <button class="btn btn-warning">Güncelle</button>
+    </div>
+
+}

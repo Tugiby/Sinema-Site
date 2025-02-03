@@ -1,0 +1,38 @@
+﻿@model proje1.Models.Siniflar.filmozellik
+@{
+    ViewBag.Title = "yenifilm";
+    Layout = "~/Views/Shared/adminlayout.cshtml";
+}
+<br />
+<h2>Yeni Film Sayfası</h2>
+<br />
+<form class="form-group" method="post">
+    @Html.LabelFor(x => x.filmad)
+    @Html.TextBoxFor(x => x.filmad, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.yonetmen)
+    @Html.TextBoxFor(x => x.yonetmen, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.biletfiyat)
+    @Html.TextBoxFor(x => x.biletfiyat, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.filmgorsel)
+    @Html.TextBoxFor(x => x.filmgorsel, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.kategori.Kategoriid)
+    @Html.DropDownListFor(x => x.kategoriid, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+
+    <br />
+    @Html.LabelFor(x => x.seanslar)
+    @Html.TextBoxFor(x => x.seansid, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x => x.durum)
+    @Html.TextBoxFor(x => x.durum, new { @class = "form-control" })
+    <br />
+
+
+
+
+    <button class="btn btn-primary">Kaydet</button>
+</form>

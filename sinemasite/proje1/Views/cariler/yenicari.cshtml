@@ -1,0 +1,23 @@
+﻿@model proje1.Models.Siniflar.caribilgi
+@{
+    ViewBag.Title = "yenicari";
+    Layout = "~/Views/Shared/adminlayout.cshtml";
+}
+<br />
+<h2>Yeni Cari Sayfası</h2>
+<br />
+<form class="form-group" method="post">
+    @Html.LabelFor(x => x.cariad)
+    @Html.TextBoxFor(x => x.cariad, new { @class = "form-control" })
+
+    @Html.LabelFor(x => x.carisoyad)
+    @Html.TextBoxFor(x => x.carisoyad, new { @class = "form-control" })
+
+    @Html.LabelFor(x => x.carimail)
+    @Html.TextBoxFor(x => x.carimail, new { @class = "form-control" })
+
+    <br />
+    <button class="btn btn-info">Kaydet</button>
+
+</form>
+
